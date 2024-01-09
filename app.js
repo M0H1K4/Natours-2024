@@ -1,5 +1,5 @@
+const fs = require('fs');
 const express = require('express');
-
 const app = express();
 
 // app.get('/main', (req, res) => {
@@ -10,9 +10,15 @@ const app = express();
 //     res.send('u can post now here!');
 // });
 
+const tours = JSON.parse(
+  fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
+);
 
+app.get('/api/v1/tours', (req, res) => {
+  res.json(tours);
+});
 
-const port = 8080;
+const port = 3000;
 app.listen(port, () => {
   console.log(`listening to the port ${port}`);
 });
