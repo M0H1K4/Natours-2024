@@ -2,11 +2,14 @@ const express = require('express');
 
 const app = express();
 
-app.get('/', (req, res) => {
+const port = 8080;
+app.get('/main', (req, res) => {
   res.status(202).json({ message: 'hello from the serever side!', number: 2 });
 });
 
-const port = 8080;
+app.post('/post', (req, res) => {
+  res.send('u can post now here!');
+});
 
 app.listen(port, () => {
   console.log(`listening to the port ${port}`);
